@@ -14,7 +14,9 @@ EXPOSE 8000
 ENTRYPOINT ["python","-m","SimpleHTTPServer","8000"]
 
 
-#run with - docker run -p 8000:8000 <image>
+#run with - 
+#docker run -d -p 8000:8000 agayaga/react-testing
+
 #DO NOT DELETE - for debug use
 #CMD bash -c 'tail -f /dev/null'
 
