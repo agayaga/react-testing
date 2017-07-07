@@ -5,7 +5,6 @@ RUN apt-get install --fix-missing --force-yes make
 RUN apt-get install --fix-missing --force-yes g++
 #clone github project
 RUN git clone https://github.com/agayaga/react-testing
-#WORKDIR /app
 WORKDIR /react-testing
 RUN npm install 
 RUN make
