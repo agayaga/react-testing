@@ -9,11 +9,11 @@ WORKDIR /react-testing
 RUN npm install 
 RUN make
 EXPOSE 8000
-# run the app
+#run app
 ENTRYPOINT ["python","-m","SimpleHTTPServer","8000"]
 
 
-#run with - 
+#docker command 
 #docker run -d -p 8000:8000 agayaga/react-testing
 
 #DO NOT DELETE - for debug use
