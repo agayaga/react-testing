@@ -1,0 +1,10 @@
+- hosts: local
+  tasks:
+    - name: Pull latest container
+      raw: docker pull agayaga/react-testing:latest
+    - name: Kill container
+      raw: docker kill is_alive_test
+    - name: Delete container
+      raw: docker rm is_alive_test
+    - name: Deploy container
+      raw: docker run -d -p 8000:8000 --name is_alive_test  agayaga/react-testing:latest
