@@ -1,3 +1,41 @@
+*React Testability original README.md content can be found at the bottom of the page
+
+CI/CD flow example
+==================
+This is a simple CI/CD flow project example.
+The react testability project is used here as a core code.
+
+In this project:
+
+
+* the app was containerized ([Dockerfile](https://github.com/agayaga/react-testing/blob/master/Dockerfile))
+* Jenkins CI server was configured with a dedicated [job](http://54.93.250.38:8080/job/react_testing_docker/)
+* [deploy](https://github.com/agayaga/react-testing/tree/master/deploy) directory includes ansible-playbook 
+
+
+
+## Flow
+* Git push to github (SCM change) triggers build in jenkins
+* jenkins build stages:
+   * docker build with latest image and code (this stage include unit tests) more detailes can be found at the ([Dockerfile](https://github.com/agayaga/react-testing/blob/master/Dockerfile)).
+   * docker container is being run for a sanity test (http request for is alive? test).
+   * container is killed after test.
+   * the updated docker image is pushed to [dockerhub](https://hub.docker.com/r/agayaga/react-testing/).
+   * image deployment with [ansible-playbook] (https://github.com/agayaga/react-testing/blob/master/scripts/ansible/deploy_container.yml) (ansible playbook pulls latest image and deploy it on localhost for demo reasons, but can deploy on a remote machine as well).
+   * up-to-date container is being run [react testability app container](http://54.93.250.38:8000/)
+   
+***
+
+## Related urls:
+
+* [jenkins server](http://54.93.250.38:8080/) (view only, for running - username and password will be sent via email)
+* [react testability app container](http://54.93.250.38:8000/)
+* [dockerhub](https://hub.docker.com/r/agayaga/react-testing/).
+
+
+
+
+
 React Testability
 =================
 
